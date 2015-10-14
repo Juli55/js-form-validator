@@ -38,7 +38,6 @@
         </div>
         <script>
             var formValidation = new formValidation();
-            var form = {};
             $(document).ready(function(){
                 $(document).on('submit', 'form#testForm', function(){
                     formValidation.init($(this), 'example.com/ajaxForm', validate);
@@ -47,7 +46,7 @@
                 });
             });
             var validate = function(change, input, validationObject){
-                if(validationObject.access.valid == false){
+                if(validationObject.access.valid){
                     console.log('access successfully');
                 } else {
                     console.log('access denied');
