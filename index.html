@@ -1,0 +1,58 @@
+<!-- resources/views/auth/login.blade.php !-->
+<!Doctype html>
+<html>
+    <head>
+        <title>JS-Form-Validation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified Jquery -->
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <!-- Script to validate Forms -->
+        <script src="js/formValidation.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h1>Javascript-Form-Validator</h1>
+                    <form method="POST" id="testForm">
+                        <div class="form-group">
+                            <label for="field1">Field1</label>
+                            <input type="text" class="form-control" id="field1" placeholder="field1" name="field1" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="field1">Field2</label>
+                            <input type="text" class="form-control" id="field2" placeholder="field2" name="field2" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="field1">Field3</label>
+                            <input type="text" class="form-control" id="field3" placeholder="field3" name="field3" value="">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+            </div>
+        </div>
+        <script>
+            var formValidation = new formValidation();
+            var form = {};
+            $(document).ready(function(){
+                $(document).on('submit', 'form#testForm', function(){
+                    formValidation.init($(this), 'example.com/ajaxForm', validate);
+                    formValidation.validate();
+                    return false;
+                });
+            });
+            var validate = function(change, input, validationObject){
+                if(validationObject.access.valid == false){
+                    console.log('access successfully');
+                } else {
+                    console.log('access denied');
+                }
+            }
+        </script>
+    </body>
+</html>
